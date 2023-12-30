@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import store from "./store/store.ts";
 import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
 import "./index.css";
-import { Products } from "./pages/Products.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Products />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 interface CardProps {
+  id: number;
   image: string;
   title: string;
   price: number;
@@ -7,7 +10,9 @@ interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
-  const { image, title, price, description, discount } = props;
+  const { id, image, title, price, description, discount } = props;
+  const navigate = useNavigate();
+
   const cardTitle =
     title.length < 15 ? title : `${title.substring(0, 15).trim()}...`;
   const cardDescription =
@@ -36,7 +41,10 @@ export const Card = (props: CardProps) => {
       <p className="text-fontGray font-medium text-sm font-general mb-3">
         {cardDescription}
       </p>
-      <button className="font-general w-full bg-black text-white rounded-full h-10 font-semibold">
+      <button
+        className="font-general w-full bg-black text-white rounded-full h-10 font-semibold"
+        onClick={() => navigate(`/${id}`)}
+      >
         See details
       </button>
     </article>
