@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        fontGray: "#323232",
+        bgGray: "#F5F5F5",
+        borderGray: "#DBDBDB",
+      },
+    },
     fontFamily: {
       general: ["General Sans", "sans-serif"],
     },
