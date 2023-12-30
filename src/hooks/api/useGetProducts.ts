@@ -9,7 +9,7 @@ export const useGetProducts = <T>(url: string, limit: number) => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${url}?limit=${limit}`);
+      const response = await axios.get(`${url}`);
       setLoading(false);
       setData(response.data);
     } catch (err) {
