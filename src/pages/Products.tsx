@@ -51,6 +51,7 @@ export const Products = () => {
         <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
           {products.map((product) => (
             <Card
+              id={product.id}
               image={product.image}
               title={product.title}
               price={product.price}

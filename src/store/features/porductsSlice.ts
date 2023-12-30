@@ -45,5 +45,7 @@ export const fetchProducts = createAsyncThunk(
 
 export const selectAllProducts = (state: RootState) => state.products.products;
 export const selectFetchStatus = (state: RootState) => state.products.status;
+export const selectProductById = (id: number) => (state: RootState) =>
+  state.products.products.filter((product) => id === product.id);
 
 export default productsSlice.reducer;

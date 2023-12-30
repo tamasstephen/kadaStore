@@ -7,6 +7,7 @@ export default {
         fontGray: "#323232",
         bgGray: "#F5F5F5",
         borderGray: "#DBDBDB",
+        primaryPurple: "#6100FF",
       },
     },
     fontFamily: {
