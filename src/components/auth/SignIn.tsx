@@ -31,7 +31,7 @@ export const SignIn = () => {
   };
 
   return (
-    <div className="bg-white px-20 py-10 relative border border-gray-300 rounded-md">
+    <div className="px-8 py-4 bg-white lg:px-20 lg:py-10 relative border border-gray-300 rounded-md">
       <button
         className="absolute top-10 right-10 text-primaryPurple font-semibold"
         onClick={() => dispatch(closeModal())}
