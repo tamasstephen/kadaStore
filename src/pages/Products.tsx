@@ -1,4 +1,4 @@
-import { Card } from "../components";
+import { Card, Spinner } from "../components";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../store";
 import { fetchProducts, selectAllProducts, selectFetchStatus } from "../store";
@@ -21,6 +21,7 @@ export const Products = () => {
     }
   }, [dispatch, products, status, fetchLimit]);
 
+  // Handle infinite scroll
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && status === FetchStatus.FULFILLED) {
@@ -29,19 +30,24 @@ export const Products = () => {
       }
     });
     if (boundary.current) {
-      observer.observe(boundary.current); // Start observing the loader element
+      observer.observe(boundary.current);
     }
 
     return () => {
       if (boundary.current) {
-        observer.unobserve(boundary.current); // Cleanup: Stop observing when component unmounts
+        observer.unobserve(boundary.current);
       }
     };
   });
 
   if (!products.length && status !== FetchStatus.REJECTED) {
-    //TODO: Add spinner
-    return <div>Loading</div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="-translate-y-[200%]">
+          <Spinner />
+        </div>
+      </div>
+    );
   }
 
   if (products) {

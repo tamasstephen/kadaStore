@@ -9,6 +9,7 @@ export const Cart = () => {
   const isSignedIn = useSelector(selectSignedInState);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const isPurchaseButtonDisabled = !Object.entries(cartItems).length;
 
   const onPurchaseClick = () => {
     if (!isSignedIn) {
@@ -47,7 +48,12 @@ export const Cart = () => {
             ))}
           </ul>
         </section>
-        <Button onClick={onPurchaseClick} size="large" width="w-60">
+        <Button
+          onClick={onPurchaseClick}
+          size="large"
+          width="w-60"
+          isDisabled={isPurchaseButtonDisabled}
+        >
           Purchase
         </Button>
       </div>

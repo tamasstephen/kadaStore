@@ -1,5 +1,7 @@
-export { Card } from "./Card";
-export { Rating } from "./Rating";
-export { NavBar } from "./NavBar";
-export { Heading } from "./Heading";
+export * from "./Card";
+export * from "./Rating";
+export * from "./NavBar";
+export * from "./Heading";
 export * from "./Button";
+export * from "./NavButton";
+export * from "./Spinner";

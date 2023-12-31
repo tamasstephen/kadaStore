@@ -2,6 +2,8 @@ import { closeModal, useAppDispatch } from "../../store";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { FormEvent, useState } from "react";
+import { Heading } from "..";
+import { Input } from "./Input";
 
 export const SignIn = () => {
   const dispatch = useAppDispatch();
@@ -27,25 +29,33 @@ export const SignIn = () => {
         });
     }
   };
+
   return (
-    <div className="bg-white p-20 relative">
+    <div className="px-8 py-4 bg-white lg:px-20 lg:py-10 relative border border-gray-300 rounded-md">
       <button
-        className="absolute top-10 right-10"
+        className="absolute top-10 right-10 text-primaryPurple font-semibold"
         onClick={() => dispatch(closeModal())}
       >
         Close
       </button>
       <form onSubmit={signIn}>
-        <div>{error && <p>{error}</p>}</div>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
-        </fieldset>
-        <input type="submit" disabled={isLoading} />
+        <Heading>Sign In</Heading>
+        <div>
+          {error && (
+            <p className="font-general p-2 flex justify-center items-center bg-red-100 text-red-900 rounded-md mb-4">
+              {error}
+            </p>
+          )}
+        </div>
+
+        <Input type="email" name="email" label="Email" required />
+        <Input type="password" name="password" label="Password" required />
+        <input
+          className="bg-black text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
+          type="submit"
+          disabled={isLoading}
+          value="Sign in"
+        />
       </form>
     </div>
   );
