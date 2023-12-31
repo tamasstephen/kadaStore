@@ -7,7 +7,7 @@ import { selectModalState } from "../store";
 import { SignIn } from "../components/auth/SignIn";
 import Portal from "../components/modal/Portal";
 import { Register } from "../components/auth";
-import { ProtectedRoutes } from ".";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 import { Checkout } from "../pages/Checkout";
 
 const router = createBrowserRouter([
