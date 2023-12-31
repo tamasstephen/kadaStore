@@ -1,8 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Cart, Product, Products } from "../pages";
 import { NavBar } from "../components";
+import { RouterProvider } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectModalState } from "../store";
+import { SignIn } from "../components/auth/SignIn";
+import Portal from "../components/modal/Portal";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <NavBar />,
@@ -22,3 +27,17 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+export const AppRouter = () => {
+  const isModalOpen = useSelector(selectModalState);
+  return (
+    <>
+      <RouterProvider router={router} />
+      {isModalOpen && (
+        <Portal>
+          <SignIn />
+        </Portal>
+      )}
+    </>
+  );
+};
