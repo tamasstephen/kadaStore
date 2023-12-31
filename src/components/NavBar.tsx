@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { selectCartAmount } from "../store/features/cartSlice";
 import { useSelector } from "react-redux";
 import { Outlet, Link, useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ import {
 import { useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import Cart from "../assets/shopping_cart.svg?react";
 
 export const NavBar = () => {
   const cartItemAmount = useSelector(selectCartAmount);
@@ -64,9 +66,14 @@ export const NavBar = () => {
                 </button>
               </>
             )}
-            <p>
-              <Link to="/cart">{cartItemAmount}</Link>
-            </p>
+            <div className="relative">
+              <Link to="/cart">
+                <Cart />
+                <p className="absolute -top-2 -right-1 rounded-full bg-black text-white w-4 h-4 flex justify-center items-center text-sm">
+                  {cartItemAmount}
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
