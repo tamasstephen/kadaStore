@@ -11,9 +11,9 @@ export const Rating = ({ rating }: RatingProps) => {
     <div className="flex">
       {arr.map((_, idx) =>
         idx < rating ? (
-          <Star className="fill-primaryPurple" />
+          <Star className="fill-primaryPurple" key={`rate_${idx}`} />
         ) : (
-          <Star className="fill-gray-300" />
+          <Star className="fill-gray-300" key={`rate_${idx}`} />
         )
       )}
     </div>

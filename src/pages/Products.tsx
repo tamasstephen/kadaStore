@@ -4,6 +4,7 @@ import { useAppDispatch } from "../store";
 import { fetchProducts, selectAllProducts, selectFetchStatus } from "../store";
 import { useEffect, useRef, useState } from "react";
 import { FetchStatus } from "../constants";
+import { Heading } from "../components";
 
 const INITIAL_FETCH_LIMIT = 8;
 
@@ -39,16 +40,15 @@ export const Products = () => {
   });
 
   if (!products.length && status !== FetchStatus.REJECTED) {
+    //TODO: Add spinner
     return <div>Loading</div>;
   }
 
   if (products) {
     return (
-      <div className="flex flex-col items-center bg-bgGray pb-12">
-        <h1 className=" text-5xl font-semibold font-general my-12 text-fontGray">
-          See products
-        </h1>
-        <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="flex flex-col items-center pb-12">
+        <Heading>See products</Heading>
+        <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-24">
           {products.map((product) => (
             <Card
               id={product.id}
