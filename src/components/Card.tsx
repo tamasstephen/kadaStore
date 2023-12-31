@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from ".";
 
 interface CardProps {
   id: number;
@@ -41,12 +42,10 @@ export const Card = (props: CardProps) => {
       <p className="text-fontGray font-medium text-sm font-general mb-3">
         {cardDescription}
       </p>
-      <button
-        className="font-general w-full bg-black text-white rounded-full h-10 font-semibold"
-        onClick={() => navigate(`/${id}`)}
-      >
+      <Button onClick={() => navigate(`/${id}`)} size="default">
+        {" "}
         See details
-      </button>
+      </Button>
     </article>
   );
 };

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetProduct } from "../hooks/api/useGetProduct";
 import type { Product as ProductType } from "../types";
-import { Rating } from "../components";
+import { Button, Rating } from "../components";
 import { useAppDispatch } from "../store";
 import { addToCart } from "../store/features/cartSlice";
 
@@ -53,12 +53,13 @@ export const Product = () => {
             <p className="font-general text-fontGray text-5xl font-semibold">
               {product.price} $
             </p>
-            <button
+            <Button
               onClick={() => dispatch(addToCart(product))}
-              className="font-general bg-black h-10 text-white font-semibold w-[260px] rounded-full"
+              size="large"
+              width="w-56"
             >
               Add to cart
-            </button>
+            </Button>
           </div>
         </section>
       </div>

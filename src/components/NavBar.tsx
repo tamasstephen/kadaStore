@@ -11,7 +11,9 @@ export const NavBar = () => {
           <p className="font-general font-semibold text-lg">
             <Link to="/">Shopperz</Link>
           </p>
-          <p>{cartItemAmount}</p>
+          <p>
+            <Link to="/cart">{cartItemAmount}</Link>
+          </p>
         </div>
       </div>
       <div>
