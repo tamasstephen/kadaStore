@@ -19,4 +19,4 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const auth = getAuth(app);
+export const auth = getAuth(app);

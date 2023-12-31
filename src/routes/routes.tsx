@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { selectModalState } from "../store";
 import { SignIn } from "../components/auth/SignIn";
 import Portal from "../components/modal/Portal";
+import { Register } from "../components/auth";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },
