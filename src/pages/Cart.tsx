@@ -1,10 +1,22 @@
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../store/features/cartSlice";
 import { Button, Heading } from "../components";
+import { openModal, selectSignedInState, useAppDispatch } from "../store";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const cartItems = useSelector(selectCartItems);
-  console.log(cartItems);
+  const isSignedIn = useSelector(selectSignedInState);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const onPurchaseClick = () => {
+    if (!isSignedIn) {
+      dispatch(openModal());
+    } else {
+      navigate("/checkout");
+    }
+  };
 
   return (
     <div className="min-w-screen min-h-screen flex justify-center pb-10">
@@ -35,7 +47,7 @@ export const Cart = () => {
             ))}
           </ul>
         </section>
-        <Button onClick={() => {}} size="large" width="w-60">
+        <Button onClick={onPurchaseClick} size="large" width="w-60">
           Purchase
         </Button>
       </div>
