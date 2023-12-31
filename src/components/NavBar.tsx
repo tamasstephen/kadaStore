@@ -1,16 +1,22 @@
 import { selectCartAmount } from "../store/features/cartSlice";
 import { useSelector } from "react-redux";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { openModal, useAppDispatch } from "../store";
-import { useEffect, useState } from "react";
+import {
+  openModal,
+  selectSignedInState,
+  setToSignedIn,
+  setToSignedOut,
+  useAppDispatch,
+} from "../store";
+import { useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 export const NavBar = () => {
   const cartItemAmount = useSelector(selectCartAmount);
   const dispatch = useAppDispatch();
+  const isSignedIn = useSelector(selectSignedInState);
   const navigate = useNavigate();
-  const [signedIn, setSignedIn] = useState(false);
 
   const logOut = () => {
     signOut(auth);
@@ -19,9 +25,9 @@ export const NavBar = () => {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setSignedIn(true);
+        dispatch(setToSignedIn());
       } else {
-        setSignedIn(false);
+        dispatch(setToSignedOut());
       }
       return () => listen();
     });
@@ -35,7 +41,7 @@ export const NavBar = () => {
             <Link to="/">Shopperz</Link>
           </p>
           <div className="flex items-center">
-            {signedIn ? (
+            {isSignedIn ? (
               <button
                 className="mr-2 rounded-full bg-black text-white font-semibold px-4 py-1 text-sm"
                 onClick={logOut}

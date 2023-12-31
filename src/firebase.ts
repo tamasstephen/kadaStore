@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDpPjsoB_eXJ7iVOGDoBQY9-6H-Ef7pVQo",
-  authDomain: "kadastore-ea4da.firebaseapp.com",
-  projectId: "kadastore-ea4da",
-  storageBucket: "kadastore-ea4da.appspot.com",
-  messagingSenderId: "991260221952",
-  appId: "1:991260221952:web:4e1f07d8a4b1938f146ee5",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
