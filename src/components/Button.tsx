@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 interface ButtonProps extends PropsWithChildren {
   onClick: () => void;
-  size: "default" | "large";
+  size: "default" | "large" | "small";
   width?: string;
 }
 

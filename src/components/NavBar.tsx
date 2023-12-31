@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import Cart from "../assets/shopping_cart.svg?react";
+import { NavButton } from ".";
 
 export const NavBar = () => {
   const cartItemAmount = useSelector(selectCartAmount);
@@ -38,32 +39,21 @@ export const NavBar = () => {
   return (
     <div className="  bg-bgGray ">
       <div className="w-full flex flex-col items-center">
-        <div className="max-w-screen-xl w-full flex justify-between py-4">
+        <div className="px-4 lg:px-0 lg:max-w-screen-lg xl:max-w-screen-xl w-full flex justify-between py-6">
           <p className="font-general font-semibold text-lg">
-            <Link to="/">Shopperz</Link>
+            <Link to="/">Shop</Link>
           </p>
           <div className="flex items-center">
             {isSignedIn ? (
-              <button
-                className="mr-2 rounded-full bg-black text-white font-semibold px-4 py-1 text-sm"
-                onClick={logOut}
-              >
-                Log out
-              </button>
+              <NavButton onClick={logOut}>Log Out</NavButton>
             ) : (
               <>
-                <button
-                  className="mr-2 rounded-full bg-black text-white font-semibold px-4 py-1 text-sm"
-                  onClick={() => dispatch(openModal())}
-                >
-                  Log in
-                </button>
-                <button
-                  className="mr-2 rounded-full bg-black text-white font-semibold px-4 py-1 text-sm"
-                  onClick={() => navigate("/register")}
-                >
+                <NavButton onClick={() => dispatch(openModal())}>
+                  Log In
+                </NavButton>
+                <NavButton onClick={() => navigate("/register")} isInverse>
                   Register
-                </button>
+                </NavButton>
               </>
             )}
             <div className="relative">
