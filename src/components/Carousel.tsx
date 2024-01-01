@@ -36,7 +36,10 @@ export const Carousel = ({ images }: SliderProps) => {
         <div className="flex justify-center mt-4 xl:mt-9">
           <div>
             {images.map((_, idx) => (
-              <button onClick={() => setCurrentImage(idx)}>
+              <button
+                key={`carousel_${idx}`}
+                onClick={() => setCurrentImage(idx)}
+              >
                 <div
                   className={`w-2.5 h-2.5 rounded-full mr-3 ${
                     idx === currentImage ? "bg-primaryPurple" : "bg-gray-400"
