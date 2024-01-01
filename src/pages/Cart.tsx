@@ -1,8 +1,10 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../store/features/cartSlice";
+import { removeFromCart, selectCartItems } from "../store/features/cartSlice";
 import { Button, Heading } from "../components";
 import { openModal, selectSignedInState, useAppDispatch } from "../store";
 import { useNavigate } from "react-router-dom";
+import Bin from "../assets/delete.svg?react";
 
 export const Cart = () => {
   const cartItems = useSelector(selectCartItems);
@@ -32,16 +34,23 @@ export const Cart = () => {
                     className="w-1/4 aspect-square object-cover object-top rounded-md w-40 mr-4"
                     src={product.product.image}
                   />
-                  <div>
-                    <h2 className="font-general text-fontGray text-lg font-semibold mb-2">
-                      {product.product.title}
-                    </h2>
-                    <p className="font-general text-fontGray mb-2">
-                      Quantity: {product.quantity}
-                    </p>
-                    <p className="font-general text-fontGray text-lg font-semibold">
-                      {product.quantity * product.product.price} $
-                    </p>
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <h2 className="font-general text-fontGray text-lg font-semibold mb-2">
+                        {product.product.title}
+                      </h2>
+                      <p className="font-general text-fontGray mb-2">
+                        Quantity: {product.quantity}
+                      </p>
+                      <p className="font-general text-fontGray text-lg font-semibold mb-2">
+                        {product.quantity * product.product.price} $
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => dispatch(removeFromCart(product.product))}
+                    >
+                      <Bin className="fill-primaryPurple" />
+                    </button>
                   </div>
                 </article>
               </li>
