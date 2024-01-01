@@ -15,7 +15,7 @@ export const Register = () => {
     const form = new FormData(e.target as HTMLFormElement);
     const email = form.get("email") as string;
     const password = form.get("password") as string;
-    if (email && password) {
+    if (password && password.length > 7) {
       setIsLoading(true);
       setError(null);
       createUserWithEmailAndPassword(auth, email, password)
@@ -26,13 +26,15 @@ export const Register = () => {
           setIsLoading(false);
           setError("An error has occured");
         });
+    } else {
+      setError("The password needs to be at least 8 characters");
     }
   };
 
   return (
     <div className="p-20 min-h-screen flex flex-col items-center">
-      <Heading>Create Account</Heading>
-      <div className="max-w-lg">
+      <div className="max-w-lg w-60 xl:w-96">
+        <Heading centered>Create Account</Heading>
         <div>
           {error && (
             <p className="font-general p-2 flex justify-center items-center bg-red-100 text-red-900 rounded-md mb-4">
