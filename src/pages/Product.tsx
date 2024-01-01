@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetProduct } from "../hooks/api/useGetProduct";
 import type { Product as ProductType } from "../types";
-import { Button, Rating, Tag } from "../components";
+import { Button, Rating, Spinner, Tag } from "../components";
 import { useAppDispatch } from "../store";
 import { addToCart } from "../store/features/cartSlice";
 
@@ -21,7 +21,13 @@ export const Product = () => {
   }
 
   if (loading || !product) {
-    return <div>Loading</div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="-translate-y-[200%]">
+          <Spinner />
+        </div>
+      </div>
+    );
   }
 
   return (
