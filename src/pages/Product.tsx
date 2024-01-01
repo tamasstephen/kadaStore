@@ -4,11 +4,6 @@ import type { Product as ProductType } from "../types";
 import { Button, Rating, Spinner, Tag } from "../components";
 import { useAppDispatch } from "../store";
 import { addToCart } from "../store/features/cartSlice";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { Carousel } from "../components/Carousel";
 
 export const Product = () => {
