@@ -11,6 +11,10 @@ export const Cart = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isPurchaseButtonDisabled = !Object.entries(cartItems).length;
+  const totalPrice = Object.values(cartItems).reduce(
+    (acc, curr) => curr.product.price * curr.quantity + acc,
+    0
+  );
 
   const onPurchaseClick = () => {
     if (!isSignedIn) {
@@ -24,8 +28,8 @@ export const Cart = () => {
     <div className="min-w-screen min-h-screen flex justify-center pb-10">
       <div className="w-full flex flex-col items-center">
         <Heading>Cart</Heading>
-        <section className="flex w-full justify-center mb-8">
-          <ul className="w-full flex flex-col items-center">
+        <section className="flex w-full justify-center mb-8  ">
+          <ul className="w-full flex flex-col items-center ">
             {Object.entries(cartItems).map(([id, product]) => (
               <li key={id} className="p-4 md:p-0 w-56 sm:w-60 md:w-96 mb-4">
                 <CartProduct product={product} />
@@ -33,6 +37,11 @@ export const Cart = () => {
             ))}
           </ul>
         </section>
+        <div className="w-56 sm:w-60 md:w-96 mb-4 flex justify-center border-t border-gray-400 pt-2">
+          <p className="font-general mb-3 text-xl">
+            Total: <span className="font-semibold">{totalPrice} $</span>
+          </p>
+        </div>
         <Button
           onClick={onPurchaseClick}
           size="large"
