@@ -55,7 +55,7 @@ export const Products = () => {
       <div className="flex flex-col items-center pb-12">
         <Heading>See products</Heading>
         <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-24">
-          {products.map((product) => (
+          {products.map((product, idx) => (
             <Card
               id={product.id}
               image={product.image}
@@ -63,6 +63,7 @@ export const Products = () => {
               price={product.price}
               description={product.description}
               key={product.id}
+              discount={(idx % 4) + 1}
             />
           ))}
         </section>
