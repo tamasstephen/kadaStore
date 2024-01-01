@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { selectCartAmount } from "../store/features/cartSlice";
 import { useSelector } from "react-redux";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import {
   openModal,
   selectSignedInState,
@@ -20,10 +20,15 @@ export const NavBar = () => {
   const dispatch = useAppDispatch();
   const isSignedIn = useSelector(selectSignedInState);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logOut = () => {
     signOut(auth);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
