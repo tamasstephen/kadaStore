@@ -3,6 +3,7 @@ import { selectCartItems } from "../store/features/cartSlice";
 import { Button, Heading } from "../components";
 import { openModal, selectSignedInState, useAppDispatch } from "../store";
 import { useNavigate } from "react-router-dom";
+import { CartProduct } from "../components";
 
 export const Cart = () => {
   const cartItems = useSelector(selectCartItems);
@@ -26,24 +27,8 @@ export const Cart = () => {
         <section className="flex w-full justify-center mb-8">
           <ul className="w-full flex flex-col items-center">
             {Object.entries(cartItems).map(([id, product]) => (
-              <li key={id} className="w-96 mb-4">
-                <article className="flex">
-                  <img
-                    className="w-1/4 aspect-square object-cover object-top rounded-md w-40 mr-4"
-                    src={product.product.image}
-                  />
-                  <div>
-                    <h2 className="font-general text-fontGray text-lg font-semibold mb-2">
-                      {product.product.title}
-                    </h2>
-                    <p className="font-general text-fontGray mb-2">
-                      Quantity: {product.quantity}
-                    </p>
-                    <p className="font-general text-fontGray text-lg font-semibold">
-                      {product.quantity * product.product.price} $
-                    </p>
-                  </div>
-                </article>
+              <li key={id} className="p-4 md:p-0 w-56 sm:w-60 md:w-96 mb-4">
+                <CartProduct product={product} />
               </li>
             ))}
           </ul>

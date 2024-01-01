@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from ".";
+import { Button, Tag } from ".";
 
 interface CardProps {
   id: number;
@@ -27,9 +27,7 @@ export const Card = (props: CardProps) => {
           className="object-cover object-top aspect-video roudned-md"
           src={image}
         />
-        {discount ? (
-          <div className="absolute font-general">{discount}</div>
-        ) : null}
+        {discount && <Tag discount={discount} isCardTag />}
       </div>
       <div className="flex justify-between mt-2.5 mb-1">
         <h2 className="text-xl font-semibold text-fontGray font-general">

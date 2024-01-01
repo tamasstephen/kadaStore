@@ -5,3 +5,5 @@ export * from "./Heading";
 export * from "./Button";
 export * from "./NavButton";
 export * from "./Spinner";
+export * from "./Tag";
+export * from "./CartProduct.tsx";

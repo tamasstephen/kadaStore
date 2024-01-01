@@ -24,7 +24,7 @@ export const SignIn = () => {
           setIsLoading(false);
         })
         .catch(() => {
-          setError("An error has occured");
+          setError("Invalid email or password");
           setIsLoading(false);
         });
     }

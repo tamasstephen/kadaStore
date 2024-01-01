@@ -14,7 +14,7 @@ export const Button = ({
   width,
   isDisabled,
 }: ButtonProps) => {
-  const buttonSize = size === "default" ? "h-10" : "h-16 text-xl";
+  const buttonSize = size === "default" ? "h-10" : "h-10 xl:h-16 xl:text-xl";
   const buttonWidth = width ? width : "w-full";
   const buttonBg = isDisabled ? "bg-gray-400" : "bg-black";
   return (
