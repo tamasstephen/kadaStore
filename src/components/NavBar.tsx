@@ -20,7 +20,7 @@ export const NavBar = () => {
   const dispatch = useAppDispatch();
   const isSignedIn = useSelector(selectSignedInState);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const logOut = () => {
     signOut(auth);
@@ -28,7 +28,7 @@ export const NavBar = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+  }, [pathname]);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {

@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# KadaStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Shop is a client side online store with the following functionalities:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- the user is able to browse the product catalog
+- the user is able to access the product detail pages
+- the user is able to sign up
+- the user is able to sign in
+- the user is able to sign out
+- the user is able to access the cart
 
-## Expanding the ESLint configuration
+## Usage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To start the project locally:
 
-- Configure the top-level `parserOptions` property like this:
+1. clone the repository
+2. install the dependencies with `npm install`
+3. set up a firebase authentication project with email and password authentication
+4. create a `.env file` (see `.env.example`) and provide your firebase authentication project credentials
+5. run the project locally with `npm run dev`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Technologies
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React
+- Typescript
+- ReactRouter
+- Redux Toolkit
