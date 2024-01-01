@@ -20,7 +20,7 @@ export const Carousel = ({ images }: SliderProps) => {
           disabled={!hasPrev}
           className="left-2 absolute top-1/2 -translate-y-1/2 lg:-left-10"
         >
-          <LeftChevron className={`h-12 ${prevButtonColor} `} />
+          <LeftChevron className={`h-10 ${prevButtonColor} `} />
         </button>
         <img
           className="object-contain w-[300px] h-[300px] xl:w-[400px] xl:h-[400px] rounded-md"
@@ -31,7 +31,7 @@ export const Carousel = ({ images }: SliderProps) => {
           disabled={!hasNext}
           className="right-2 absolute top-1/2 lg:-right-10  -translate-y-1/2 "
         >
-          <LeftChevron className={`h-12 rotate-180 ${nextButtonColor}`} />
+          <LeftChevron className={`h-10 rotate-180 ${nextButtonColor}`} />
         </button>
         <div className="flex justify-center mt-4 xl:mt-9">
           <div>

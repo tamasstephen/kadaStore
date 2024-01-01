@@ -64,7 +64,7 @@ export const Product = () => {
             </p>
           </div>
           <div className="py-7">
-            <Tag discount={parseInt(id as string) % 4} />
+            <Tag discount={(parseInt(id as string) % 4) + 1} />
           </div>
           <div className="xl:flex justify-between items-center">
             <p className="mb-4 xl:mb-0 font-general text-fontGray text-5xl font-semibold">
