@@ -28,10 +28,10 @@ export const Cart = () => {
         <section className="flex w-full justify-center mb-8">
           <ul className="w-full flex flex-col items-center">
             {Object.entries(cartItems).map(([id, product]) => (
-              <li key={id} className="w-96 mb-4">
-                <article className="flex">
+              <li key={id} className="p-4 md:p-0 w-56 sm:w-60 md:w-96 mb-4">
+                <article className="md:flex">
                   <img
-                    className="w-1/4 aspect-square object-cover object-top rounded-md w-40 mr-4"
+                    className="mb-2 md:mb-0 aspect-square object-cover object-top rounded-md md:w-40 mr-4"
                     src={product.product.image}
                   />
                   <div className="flex flex-col justify-between">

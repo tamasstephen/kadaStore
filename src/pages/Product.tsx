@@ -63,11 +63,11 @@ export const Product = () => {
               Category: {product.category}
             </p>
           </div>
-          <div className="py-7">
+          <div className="py-4 xl:py-7">
             <Tag discount={(parseInt(id as string) % 4) + 1} />
           </div>
           <div className="xl:flex justify-between items-center">
-            <p className="mb-4 xl:mb-0 font-general text-fontGray text-5xl font-semibold">
+            <p className="mb-4 text-3xl xl:mb-0 font-general text-fontGray xl:text-5xl font-semibold">
               {product.price} $
             </p>
             <Button
