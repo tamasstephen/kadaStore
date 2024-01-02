@@ -1,34 +1,29 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { Heading } from "../components";
 import { Input } from "../components/auth/Input";
 import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import { FormValues } from "../types";
+import { validationSchema } from "../utils/validationSchema";
 
 export const Register = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>();
 
-  const register = (e: FormEvent) => {
-    e.preventDefault();
-    const form = new FormData(e.target as HTMLFormElement);
-    const email = form.get("email") as string;
-    const password = form.get("password") as string;
-    if (password && password.length > 7) {
-      setIsLoading(true);
-      setError(null);
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          navigate("/");
-        })
-        .catch(() => {
-          setIsLoading(false);
-          setError("An error has occured");
-        });
-    } else {
-      setError("The password needs to be at least 8 characters");
-    }
+  const onSubmit = ({ email, password }: FormValues) => {
+    setIsLoading(true);
+    setError(null);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        navigate("/");
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setError("The provided email address already exists");
+      });
   };
 
   return (
@@ -42,15 +37,24 @@ export const Register = () => {
             </p>
           )}
         </div>
-        <form onSubmit={register}>
-          <Input type="email" name="email" label="Email" required />
-          <Input type="password" name="password" label="Password" required />
-          <input
-            className="bg-black text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
-            type="submit"
-            disabled={isLoading}
-          />
-        </form>
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          <Form>
+            <Input type="email" name="email" label="Email" />
+            <Input type="password" name="password" label="Password" />
+            <input
+              className="bg-black text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
+              type="submit"
+              disabled={isLoading}
+            />
+          </Form>
+        </Formik>
       </div>
     </div>
   );
