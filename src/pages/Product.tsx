@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetProduct } from "../hooks/api/useGetProduct";
 import type { Product as ProductType } from "../types";
-import { Button, Rating, Spinner, Tag } from "../components";
+import { Button, ProductDetail, Rating, Spinner, Tag } from "../components";
 import { useAppDispatch } from "../store";
 import { addToCart } from "../store/features/cartSlice";
 import { Carousel } from "../components/Carousel";
@@ -57,12 +57,10 @@ export const Product = () => {
             {product.description}
           </p>
           <div className="mt-3">
-            <p className="font-general text-gray-400 xl:mt-3 font-medium  mt-2 xl:text-2xl ">
+            <ProductDetail>
               Stock: {Math.floor(Math.random() * 100)}
-            </p>
-            <p className="font-general text-gray-400 xl:mt-3 font-medium  mt-2 xl:text-2xl ">
-              Category: {product.category}
-            </p>
+            </ProductDetail>
+            <ProductDetail>Category: {product.category}</ProductDetail>
           </div>
           <div className="py-4 xl:py-7">
             <Tag discount={(parseInt(id as string) % 4) + 1} />

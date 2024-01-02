@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-interface ModalState {
+interface AuthAndModalState {
   isOpen: boolean;
   isSignedIn: boolean;
 }
 
-const initialState: ModalState = {
+const initialState: AuthAndModalState = {
   isOpen: false,
   isSignedIn: false,
 };

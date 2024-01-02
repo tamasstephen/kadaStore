@@ -6,7 +6,8 @@ import { Heading } from "..";
 import { Input } from "./Input";
 import { Formik, Form } from "formik";
 import { FormValues } from "../../types";
-import { validationSchema } from "../../utils/validationSchema";
+import { validationSchema } from "../../utils/";
+import { Warning } from "../Warning";
 
 export const SignIn = () => {
   const dispatch = useAppDispatch();
@@ -46,18 +47,12 @@ export const SignIn = () => {
         >
           <Form>
             <Heading>Sign In</Heading>
-            <div>
-              {error && (
-                <p className="font-general p-2 flex justify-center items-center bg-red-100 text-red-900 rounded-md mb-4">
-                  {error}
-                </p>
-              )}
-            </div>
+            <div>{error && <Warning>{error}</Warning>}</div>
 
             <Input type="email" name="email" label="Email" />
             <Input type="password" name="password" label="Password" />
             <input
-              className="bg-black text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
+              className="bg-black hover:bg-gray-700 transition duration-300 text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
               type="submit"
               disabled={isLoading}
               value="Sign in"

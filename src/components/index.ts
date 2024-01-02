@@ -7,3 +7,4 @@ export * from "./NavButton";
 export * from "./Spinner";
 export * from "./Tag";
 export * from "./CartProduct.tsx";
+export * from "./ProductDetail.tsx";
