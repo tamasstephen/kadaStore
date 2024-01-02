@@ -6,7 +6,7 @@ import { Heading } from "..";
 import { Input } from "./Input";
 import { Formik, Form } from "formik";
 import { FormValues } from "../../types";
-import { validationSchema } from "../../utils/validationSchema";
+import { validationSchema } from "../../utils/";
 import { Warning } from "../Warning";
 
 export const SignIn = () => {

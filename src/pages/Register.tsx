@@ -6,7 +6,7 @@ import { Input } from "../components/auth/Input";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { FormValues } from "../types";
-import { validationSchema } from "../utils/validationSchema";
+import { validationSchema } from "../utils";
 import { Warning } from "../components/Warning";
 
 export const Register = () => {
