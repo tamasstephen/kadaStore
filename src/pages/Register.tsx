@@ -44,7 +44,7 @@ export const Register = () => {
             <Input type="email" name="email" label="Email" />
             <Input type="password" name="password" label="Password" />
             <input
-              className="bg-black text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
+              className="bg-black hover:bg-gray-700 transition duration-300 text-white w-full font-general font-semibold p-2 rounded-full cursor-pointer"
               type="submit"
               disabled={isLoading}
             />
